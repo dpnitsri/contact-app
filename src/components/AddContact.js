@@ -1,9 +1,12 @@
 import React from "react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { uuid } from "uuidv4";
+import { ContactContext } from "./App";
 
 
-function AddContact(props) {
+function AddContact() {
+    const contactContext = useContext(ContactContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [state, setState] = useState({ name: '', email: '', id: '' })
@@ -28,13 +31,10 @@ function AddContact(props) {
             alert("All fields are manadatory");
             return;
         }
-
         if (!location.state.update)
-            props.addContactHandler(state);
+            contactContext.contactDispatch({type:'add',contact:state,id:uuid()});
         else
-            props.updateContactHandler(state);
-        //setState({ name: '', email: '' });
-        //window.history.back();
+            contactContext.contactDispatch({type:'update',contact:state});
         navigate("/");
     }
 

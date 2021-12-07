@@ -1,19 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ContactCard from './ContactCard';
+import { useContext } from "react";
+import { ContactContext } from "./App";
 
-const ContactList = (props) => {
-    const deleteContactHandler = (id) => {
-        props.removeContact(id);
-    }
-
-    const renderContactList = props.contacts.map((contact) => {
-        return <ContactCard contact={contact} key={contact.id} clickHandler={deleteContactHandler} />
+const ContactList = () => {
+    const contactContext = useContext(ContactContext);
+    const renderContactList = contactContext.contacts.map((contact) => {
+        return <ContactCard contact={contact} key={contact.id} />
     })
 
-    const renderContactList2 = props.contactList.map((contact) => {
-        return <ContactCard contact={contact} key={contact.id} clickHandler={deleteContactHandler} />
-    })
     return (
         <div className="container">
             <div className="addcontact">
@@ -22,8 +18,7 @@ const ContactList = (props) => {
                  Add Contact
             </Link>
             </div>
-            
-            {renderContactList2}
+            {renderContactList}
         </div>
     );
 }
