@@ -2,17 +2,12 @@ h2{
   color:rgba(0, 0, 0);
   margin: 0;
 }
+
 .heading{
   padding-bottom: 20px;
   padding-top: 10px;
   text-align: center;  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   background-color: rgb(253, 249, 249);
-  
-}
-
-.contactlist{
-
-
 }
 
 .addcontact{
@@ -27,30 +22,11 @@ h2{
  font-weight: normal;
  color: rgb(65, 62, 62);
 }
-.contact{
-  padding-left: 200px;
-  align-content: center;
-}
-
-.contact input{
-  background-color: rgba(245, 232, 51, 0.3);
-  border-radius: 5px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  height: 30px;
-}
-.contact label{
-  font-size: 2em;
-  padding: 0;
-  margin:0;
-}
 
 .contactcard{
   color: rgba(0, 0, 0, 0.8);
-  width: fit-content;
   display: flex;
 }
-
 
 .contactcard h3,h6{
   margin: 0;
