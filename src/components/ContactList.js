@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ContactCard from './ContactCard';
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-const ContactList = (props) => {
+const ContactList = () => {
+    const contacts = useSelector(state=>state);
 
-    const renderContactList = props.contacts.map((contact) => {
+    const renderContactList = contacts.map((contact) => {
         return <ContactCard contact={contact} key={contact.id}/>
     })
 
@@ -22,12 +23,4 @@ const ContactList = (props) => {
     );
 }
 
-
-const mapStateToProps = state => {
-    return {
-        contacts:state
-    }
-}
-
-
-export default connect(mapStateToProps)(ContactList);
+export default ContactList;

@@ -8,9 +8,6 @@ import AddContact from './AddContact';
 import ContactList from './ContactList';
 
 
-
-    
-
 function App() {
 
   return (
