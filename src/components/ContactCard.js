@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ContactContext } from "./App";
-
+import { connect } from "react-redux";
 const ContactCard = (props) => {
-    const contactContext = useContext(ContactContext);
+
     const { id, name, email } = props.contact;
     return (
         <div className='contactcard'>
@@ -23,12 +21,19 @@ const ContactCard = (props) => {
             <div className='deletebutton'>
                 <button
                     className="btn btn-danger"
-                    onClick={() => contactContext.contactDispatch({ type: 'delete', id: id })}>
+                    onClick={() => {props.dispatch({ type:'delete',id:id})}}>
                     Del
                 </button>
             </div>
         </div>
+
+        
     );
 }
+const mapDispatchToProps = dispatch =>{
+    return {
+        dispatch:dispatch
+    }
+}
 
-export default ContactCard;
+export default connect(mapDispatchToProps)(ContactCard);

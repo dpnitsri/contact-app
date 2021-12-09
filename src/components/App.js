@@ -1,41 +1,20 @@
-import React, { useReducer } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
 import AddContact from './AddContact';
 import ContactList from './ContactList';
 
-export const ContactContext = React.createContext();
 
 
-const initialList = [];
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'add': return [...state, {...action.contact,id:action.id}];
+    
 
-    case 'delete': {
-      return state.filter((contact) => {
-        return contact.id !== action.id;
-      });
-    }
-
-    case 'update': {
-      console.log("reducerstate",state);
-      return state.map((card) => {
-        if (card.id === action.contact.id) {
-          card.name = action.contact.name;
-          card.email = action.contact.email;
-        }
-        return card;
-      });
-    }
-  }
-}
 function App() {
-  const [contactList,dispatch] = useReducer(reducer,initialList);
 
   return (
-    <ContactContext.Provider value={{contacts:contactList, contactDispatch:dispatch}}>
+    <Provider store={store}>
       <Router>
         <Header />
         <Routes>
@@ -53,7 +32,7 @@ function App() {
           />
         </Routes>
       </Router>
-    </ContactContext.Provider>
+    </Provider>
   );
 }
 

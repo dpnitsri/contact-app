@@ -26,6 +26,7 @@ h2{
 .contactcard{
   color: rgba(0, 0, 0, 0.8);
   display: flex;
+  padding: 2px 0;
 }
 
 .contactcard h3,h6{

@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ContactCard from './ContactCard';
-import { useContext } from "react";
-import { ContactContext } from "./App";
+import { connect } from "react-redux";
 
-const ContactList = () => {
-    const contactContext = useContext(ContactContext);
-    const renderContactList = contactContext.contacts.map((contact) => {
-        return <ContactCard contact={contact} key={contact.id} />
+const ContactList = (props) => {
+
+    const renderContactList = props.contacts.map((contact) => {
+        return <ContactCard contact={contact} key={contact.id}/>
     })
 
     return (
@@ -23,4 +22,12 @@ const ContactList = () => {
     );
 }
 
-export default ContactList;
+
+const mapStateToProps = state => {
+    return {
+        contacts:state
+    }
+}
+
+
+export default connect(mapStateToProps)(ContactList);
